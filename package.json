@@ -1,0 +1,27 @@
+{
+  "name": "simple-api",
+  "version": "1.0.0",
+  "description": "Simpe-API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ada lah",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.10",
+    "cors": "^2.8.5",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "form-data": "^4.0.0",
+    "fs": "^0.0.1-security",
+    "google-it": "^1.6.2",
+    "jsdom": "^17.0.0",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.0.0",
+    "node-fetch-cookies": "^2.0.3",
+    "ssl-express-www": "^3.0.8"
+  }
+}
