@@ -16,8 +16,8 @@ router.get('/tiktok', async(req, res) => {
 	}
 })
 router.get('/igdl', async(req, res) => {
-	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await igDownload(link)
 	try {
 		res.json(hasil)
@@ -27,8 +27,8 @@ router.get('/igdl', async(req, res) => {
 	}
 })
 router.get('/mediafireDl', async(req, res) => {
-	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await mediafireDl(link)
 	try {
 		res.json(hasil)
