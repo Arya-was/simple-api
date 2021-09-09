@@ -18,6 +18,7 @@
     "form-data": "^4.0.0",
     "fs": "^0.0.1-security",
     "google-it": "^1.6.2",
+    "hxz-api": "^1.0.1",
     "jsdom": "^17.0.0",
     "morgan": "^1.10.0",
     "node-fetch": "^3.0.0",
