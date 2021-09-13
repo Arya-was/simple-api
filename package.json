@@ -26,5 +26,9 @@
     "node-fetch": "^3.0.0",
     "node-fetch-cookies": "^2.0.3",
     "ssl-express-www": "^3.0.8"
+  },
+  "engines": {
+    "node": "16.x",
+    "npm": "7.x"
   }
 }
