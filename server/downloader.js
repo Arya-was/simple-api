@@ -3,7 +3,7 @@ var router = express.Router();
 const hxz = require('hxz-api')
 
 //scraper
-const { igDownload, tiktok, mediafireDl } = require('../scraper/index') 
+const { igDownload, tiktok, mediafireDl, pinterestdl } = require('../scraper/index') 
 
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
@@ -53,6 +53,17 @@ router.get('/twitter', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await hxz.twitter(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/pindl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await pinterestdl(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
