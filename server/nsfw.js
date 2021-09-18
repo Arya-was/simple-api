@@ -21,8 +21,7 @@ router.get('/nHentaiSearch', async (req, res) => {
 router.get('/doujindesuSearch', async (req, res) => {
         var query = req.query.query
         var hasil = await doujindesu(`${query}`)
-        var result = hasil.results
-		    res.json({ result })
+		    res.json(hasil)
 })
 
 module.exports = router
