@@ -4,11 +4,13 @@ const PORT = process.env.PORT || 8080;
 const morgan = require('morgan')
 const multer = require('multer')
 const path = require('path')
+const fs = require('fs')
 var app = express();
 app.use(secure)
 app.use(morgan('dev'));
 app.use(express.static('client'));
 __path = process.cwd()
+
 
 var downloader = require('./server/downloader.js');
 var search = require('./server/search.js');
