@@ -10,10 +10,5 @@ router.get('/css/style.css', async(req, res) => {
 	res.sendFile(__path + '/views/css/style.css')
 })
 
-//Kalo page yang di cari engga ada, nanti muncul ini:v
-router.use(function (req, res) {
-res.status(404)
-.send('Yang kamu cari engga ada bang:v')
-});
 
 module.exports = router
