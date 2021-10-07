@@ -1,6 +1,6 @@
 const fetch = require('node-fetch')
 const cheerio = require('cheerio')
-
+                   
 function pinterestdl(url) {
     return new Promise((resolve, reject) => {
         let params = new URLSearchParams()
@@ -11,10 +11,12 @@ function pinterestdl(url) {
                 const $ = cheerio.load(res)
                 var img = $('#showdata > div:nth-child(5) > table > tbody > tr:nth-child(2) > td:nth-child(1) > a').attr('href')
                 var vid = $('#showdata > div:nth-child(5) > table > tbody > tr:nth-child(1) > td:nth-child(1) > a').attr('href')
-                const result = { image: img, video: vid }
-                resolve({ data })
+                const result = { img, vid }
+                if (typeof vid == 'undefined') return resolve({ result: img })
+                resolve({ result: vid })
             }).catch(reject)
     })
 }
 
 module.exports = pinterestdl
+
