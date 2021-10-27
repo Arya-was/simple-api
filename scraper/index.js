@@ -4,5 +4,6 @@ module.exports = {
 	igDownload: require('./igdl'),
 	mediafireDl: require('./mediafire'),
 	doujindesu: require('./doujindesu'),
-	pinterestdl: require('./pinterestdl')
+	pinterestdl: require('./pinterestdl'),
+	scdl: require('./scdl')
 }
