@@ -39,3 +39,5 @@ router.get('/photooxy2', async(req, res) => {
 		res.json({ message: 'Ups, error' })
 	}
 })
+
+module.exports = router
