@@ -16,7 +16,7 @@ var downloader = require('./server/downloader.js');
 var search = require('./server/search.js');
 var randomimg = require('./server/randomimage.js');
 var nsfw = require('./server/nsfw.js');
-var photooxy = require('./photooxy.js');
+var photooxy = require('./server/photooxy.js');
 var main = require('./main');
 
 app.use('/downloader', downloader)
