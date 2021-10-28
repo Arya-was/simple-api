@@ -16,12 +16,14 @@ var downloader = require('./server/downloader.js');
 var search = require('./server/search.js');
 var randomimg = require('./server/randomimage.js');
 var nsfw = require('./server/nsfw.js');
+var photooxy = require('./photooxy.js');
 var main = require('./main');
 
 app.use('/downloader', downloader)
 app.use('/search', search)
 app.use('/randomimg', randomimg)
 app.use('/nsfw', nsfw)
+app.use('/photooxy', photooxy)
 app.use('/', main)
 
 // Cretae folder
