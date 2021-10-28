@@ -13,7 +13,7 @@ router.get('/photooxy1', async (req, res) => {
   	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await photoXy_1(link, text)
 	try {
-	var Buffer = fetch(hasil, {
+	var Buffer = await fetch(hasil, {
 		headers: {
 		"User-Agent": "Opera/9.80 (X11; Linux i686; U; ru) Presto/2.8.131 Version/11.11"
 		}
@@ -36,7 +36,7 @@ router.get('/photooxy2', async (req, res) => {
   	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await photoXy_2(link, text, text_2)
 	try {
-	var Buffer = fetch(hasil, {
+	var Buffer = await fetch(hasil, {
 		headers: {
 		"User-Agent": "Opera/9.80 (X11; Linux i686; U; ru) Presto/2.8.131 Version/11.11"
 		}
