@@ -1,8 +1,6 @@
 __path = process.cwd()
 const express = require('express')
 var router = express.Router();
-const fetch = require('node-fetch')
-const fs = require('fs')
 
 const { photoXy_1, photoXy_2 } = require('../scraper/photooxy')
 
@@ -13,9 +11,7 @@ router.get('/photooxy1', async (req, res) => {
   	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await photoXy_1(link, text)
 	try {
-	var Buffer = await (await fetch(hasil)).buffer()
-    	await fs.writeFileSync(__path + '/tmp/image.jpg', Buffer)
-   	 res.sendFile(__path + '/tmp/image.jpg')
+	res.json(hasil)
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
@@ -31,9 +27,7 @@ router.get('/photooxy2', async (req, res) => {
   	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await photoXy_2(link, text, text_2)
 	try {
-	var Buffer = await (await fetch(hasil)).buffer()
-    	await fs.writeFileSync(__path + '/tmp/image.jpg', Buffer)
-   	res.sendFile(__path + '/tmp/image.jpg')
+	res.json(hasil)
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
