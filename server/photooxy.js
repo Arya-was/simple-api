@@ -14,7 +14,7 @@ router.get('/photooxy1', async (req, res) => {
 	var hasil = await photoXy_1(link, text)
 	try {
 	var Buffer = await (await fetch(hasil)).buffer()
-    	await fs.writeFileSync('../tmp/image.jpg', Buffer)
+    	await fs.writeFileSync(__path + '/tmp/image.jpg', Buffer)
    	 res.sendFile(__path + '/tmp/image.jpg')
 	} catch(err) {
 		console.log(err)
@@ -32,7 +32,7 @@ router.get('/photooxy2', async (req, res) => {
 	var hasil = await photoXy_2(link, text, text_2)
 	try {
 	var Buffer = await (await fetch(hasil)).buffer()
-    	await fs.writeFileSync('../tmp/image.jpg', Buffer)
+    	await fs.writeFileSync(__path + '/tmp/image.jpg', Buffer)
    	res.sendFile(__path + '/tmp/image.jpg')
 	} catch(err) {
 		console.log(err)
