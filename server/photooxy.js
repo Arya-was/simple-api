@@ -1,6 +1,8 @@
 __path = process.cwd()
 const express = require('express')
 var router = express.Router();
+const fs = require('fs')
+const fetch = require('node-fetch')
 
 const { photoXy_1, photoXy_2 } = require('../scraper/photooxy')
 
