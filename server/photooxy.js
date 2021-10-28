@@ -17,7 +17,7 @@ router.get('/photooxy1', async (req, res) => {
 		headers: {
 		"User-Agent": "Opera/9.80 (X11; Linux i686; U; ru) Presto/2.8.131 Version/11.11"
 		}
-	}
+	})
 	var getBuffer = await Buffer.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
@@ -40,7 +40,7 @@ router.get('/photooxy2', async (req, res) => {
 		headers: {
 		"User-Agent": "Opera/9.80 (X11; Linux i686; U; ru) Presto/2.8.131 Version/11.11"
 		}
-	}
+	})
 	var getBuffer = await Buffer.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
