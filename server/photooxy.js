@@ -11,7 +11,14 @@ router.get('/photooxy1', async (req, res) => {
   	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await photoXy_1(link, text)
 	try {
-	res.json(hasil)
+	var Buffer = fetch(hasil, {
+		headers: {
+		"User-Agent": "Opera/9.80 (X11; Linux i686; U; ru) Presto/2.8.131 Version/11.11"
+		}
+	}
+	var getBuffer = await Buffer.buffer()
+	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
+	res.sendFile(__path + '/tmp/image.jpg')
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
@@ -27,7 +34,14 @@ router.get('/photooxy2', async (req, res) => {
   	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await photoXy_2(link, text, text_2)
 	try {
-	res.json(hasil)
+	var Buffer = fetch(hasil, {
+		headers: {
+		"User-Agent": "Opera/9.80 (X11; Linux i686; U; ru) Presto/2.8.131 Version/11.11"
+		}
+	}
+	var getBuffer = await Buffer.buffer()
+	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
+	res.sendFile(__path + '/tmp/image.jpg')
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
