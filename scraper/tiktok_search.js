@@ -103,5 +103,5 @@ async function randomTiktok(query) {
 		}).catch(resolve)
 	})
 }
-
-module.exports = { ttSearch, ttUser, getVid, randomTiktok }
+// Yang lain nya bonus aja:D
+module.exports = randomTiktok 
