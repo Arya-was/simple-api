@@ -5,5 +5,6 @@ module.exports = {
 	mediafireDl: require('./mediafire'),
 	doujindesu: require('./doujindesu'),
 	pinterestdl: require('./pinterestdl'),
-	scdl: require('./scdl')
+	scdl: require('./scdl'),
+	randomTiktok: require('./tiktok_search')
 }
