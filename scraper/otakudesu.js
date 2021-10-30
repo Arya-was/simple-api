@@ -3,9 +3,13 @@ const cheerio = require('cheerio')
 
 const baseUrl = 'https://otakudesu.vip'
 
+const headers = {
+	"user-agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36",
+	"cookie": "_ga=GA1.2.94384000.1635596588; _gid=GA1.2.919815583.1635596588; _gat=1"
+
 async function Search(query) {
 	return new Promise((resolve, reject) => {
-		axios.get(baseUrl+'/?s='+query+'&post_type=anime').then(res =>{
+		axios.get(baseUrl+'/?s='+query+'&post_type=anime', {headers}).then(res =>{
 			const $ = cheerio.load(res.data)
 			const result = []
 			const title = []
@@ -34,7 +38,7 @@ async function Search(query) {
 }
 async function getInfo(URL) {
 	return new Promise((resolve, reject) => {
-		axios.get(URL).then(res => {
+		axios.get(URL, {headers}).then(res => {
 			const info = {}
 			const eps = []
 			const $ = cheerio.load(res.data)
@@ -78,7 +82,7 @@ async function getInfo(URL) {
 }
 async function Getdownload(URL) {
 	return new Promise((resolve, reject) => {
-		axios.get(URL).then(res => {
+		axios.get(URL, {headers}).then(res => {
 			const $ = cheerio.load(res.data)
 			const low = $('#venkonten > div.venser > div.venutama > div.download > ul > li:nth-child(1) > a:nth-child(2)').attr('href')
 			const medium = $('#venkonten > div.venser > div.venutama > div.download > ul > li:nth-child(2) > a:nth-child(2)').attr('href')
