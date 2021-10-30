@@ -6,6 +6,7 @@ const baseUrl = 'https://otakudesu.vip'
 const headers = {
 	"user-agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.54 Safari/537.36",
 	"cookie": "_ga=GA1.2.94384000.1635596588; _gid=GA1.2.919815583.1635596588; _gat=1"
+}
 
 async function Search(query) {
 	return new Promise((resolve, reject) => {
