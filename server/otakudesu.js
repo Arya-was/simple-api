@@ -5,7 +5,7 @@ const otaku = require('../scraper/otakudesu')
 
 router.get('/search', async(req, res) => {
 	var anime = req.query.anime
-	if (!anime) return res.json({ message: 'masukan parameter Link' })
+	if (!anime) return res.json({ message: 'masukan parameter Anime' })
 	var hasil = await otaku.Search(anime)
 	try {
 		res.json(hasil)
