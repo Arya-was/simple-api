@@ -18,7 +18,7 @@ async function _tebakgambar() {
 async function tebakgambar() {
 	return new Promise(async(resolve, reject) => {
 		let ctrl = await _tebakgambar()
-		let ct = await functions.pickrandom(ctrl)
+		let ct = await  ctrl[Math.floor(Math.random() * ctrl.length)]
 		resolve(ct)
 	})
 }
