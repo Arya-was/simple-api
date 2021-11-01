@@ -9,6 +9,7 @@ var app = express();
 app.use(secure)
 app.use(morgan('dev'));
 app.use(express.static('client'));
+app.set("json spaces",2)
 __path = process.cwd()
 
 
