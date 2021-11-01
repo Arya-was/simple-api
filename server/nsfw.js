@@ -5,7 +5,7 @@ var nhentai = require('nhentai-js');
 const NanaAPI = require('nana-api')
 const nana = new NanaAPI()
 const axios = require('axios')
-const { toPDF } = require('./lib/img2Pdf')
+const { toPDF } = require(__path + '/lib/img2Pdf')
 const fs = require('fs')
 
 async function sleep(ms) {
