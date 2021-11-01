@@ -19,6 +19,7 @@ var randomimg = require('./server/randomimage.js');
 var nsfw = require('./server/nsfw.js');
 var photooxy = require('./server/photooxy.js');
 var otakudesu = require('./server/otakudesu.js');
+var games = require('./server/games.js');
 var main = require('./main');
 
 app.use('/downloader', downloader)
@@ -27,6 +28,7 @@ app.use('/randomimg', randomimg)
 app.use('/nsfw', nsfw)
 app.use('/photooxy', photooxy)
 app.use('/otakudesu', otakudesu)
+app.use('/games', games)
 app.use('/', main)
 
 // Cretae folder
