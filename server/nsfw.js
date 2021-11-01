@@ -42,11 +42,12 @@ router.get('/nhcode', async (req, res) => {
 	var query = req.query.query
 	let data = await axios.get('https://tyz-api.herokuapp.com/nsfw/nHentai?code='+query)
     	let restjson = data.data.result.pages
+	let title = data.data.result.title
     	let duckJson = await restjson.map(a => 'https://external-content.duckduckgo.com/iu/?u=' + a)
    	let jsonTopdf = await toPDF(duckJson)
-    	await fs.writeFileSync(__path + `/tmp/${query}.pdf`, jsonTopdf)
-    	await res.sendFile(__path + `/tmp/${query}.pdf`)
+    	await fs.writeFileSync(__path + `/tmp/${title}.pdf`, jsonTopdf)
+    	await res.sendFile(__path + `/tmp/${title}.pdf`)
     	await sleep(3000)
-    	await fs.unlinkSync(__path + `/tmp/${query}.pdf`)
+    	await fs.unlinkSync(__path + `/tmp/${title}.pdf`)
 })
 module.exports = router
