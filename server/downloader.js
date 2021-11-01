@@ -4,6 +4,7 @@ const hxz = require('hxz-api')
 
 //scraper
 const { igDownload, tiktok, mediafireDl, pinterestdl, scdl, sfiledl } = require('../scraper/index') 
+const { stickerDl } = require('../scraper/stickerpack')
 
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
@@ -86,6 +87,17 @@ router.get('/scdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scdl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/stickerpack', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await stickerDl(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
