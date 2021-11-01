@@ -6,5 +6,7 @@ module.exports = {
 	doujindesu: require('./doujindesu'),
 	pinterestdl: require('./pinterestdl'),
 	scdl: require('./scdl'),
-	randomTiktok: require('./tiktok_search')
+	randomTiktok: require('./tiktok_search'),
+	sfiledl: require('./solidfiles'),
+	tebakgambar: require('./tebakgambar')
 }
