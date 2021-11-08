@@ -20,7 +20,7 @@ router.get('/ramalanjodoh', async(req, res) => {
   var pasangan = req.query.pasangan
 	if (!nama) return res.json({ message: 'masukan parameter nama' })
   if (!pasangan) return res.json({ message: 'masukan parameter pasangan' })
-	var hasil = await artinama(nama, pasangan)
+	var hasil = await ramalanJodoh(nama, pasangan)
 	try {
 		res.json(hasil)
 	} catch(err) {
