@@ -8,5 +8,7 @@ module.exports = {
 	scdl: require('./scdl'),
 	randomTiktok: require('./tiktok_search'),
 	sfiledl: require('./solidfiles'),
-	tebakgambar: require('./tebakgambar')
+	tebakgambar: require('./tebakgambar'),
+	konachan: requre('konachan'),
+	savetik: require('savetik')
 }
