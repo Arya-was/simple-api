@@ -2,7 +2,7 @@ const express = require('express')
 var router = express.Router();
 
 //scraper
-const { pinterest, randomTiktok } = require('../scraper/index') 
+const { pinterest, randomTiktok, konachan } = require('../scraper/index') 
 const { stickerSearch } = require('../scraper/stickerpack')
 
 router.get('/google', async(req, res) => {
@@ -17,6 +17,12 @@ router.get('/pinterest', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await pinterest(query)
+	res.json({ result })
+})
+router.get('/konachan', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await konachan(query)
 	res.json({ result })
 })
 router.get('/tiktok', async(req, res) => {
