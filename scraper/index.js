@@ -9,6 +9,6 @@ module.exports = {
 	randomTiktok: require('./tiktok_search'),
 	sfiledl: require('./solidfiles'),
 	tebakgambar: require('./tebakgambar'),
-	konachan: requre('konachan'),
+	konachan: require('konachan'),
 	savetik: require('savetik')
 }
