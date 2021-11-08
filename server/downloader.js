@@ -25,7 +25,7 @@ router.get('/tiktoknowm', async(req, res) => {
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await savetik(link)
 	try {
-		var data = await getBuffer(hasil.video)
+		var data = await getBuffer(hasil.url)
 		await fs.writeFileSync(__path +'/tmp/tiktok.mp4', data)
    		await res.sendFile(__path +'/tmp/tiktok.mp4')
 	} catch(err) {
