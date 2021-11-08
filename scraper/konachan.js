@@ -24,4 +24,4 @@ function konachan(q) {
 		}).catch(reject)
 	})
 }
-module.exports = { konachan }
+module.exports = konachan 
