@@ -25,8 +25,7 @@ router.get('/pinterest', async(req, res) => {
 router.get('/konachan', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
-	var img_ = await konachan(query)
-	var img = img_.result
+	var img = await konachan(query)
 	const result = img[Math.floor(Math.random() * (img.length))]
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/konachan.png', data)
