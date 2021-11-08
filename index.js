@@ -20,6 +20,7 @@ var nsfw = require('./server/nsfw.js');
 var photooxy = require('./server/photooxy.js');
 var otakudesu = require('./server/otakudesu.js');
 var games = require('./server/games.js');
+var primbon = require('./server/primbon.js');
 var main = require('./main');
 
 app.use('/downloader', downloader)
@@ -29,6 +30,7 @@ app.use('/nsfw', nsfw)
 app.use('/photooxy', photooxy)
 app.use('/otakudesu', otakudesu)
 app.use('/games', games)
+app.use('/primbon', primbon)
 app.use('/', main)
 
 // Cretae folder
