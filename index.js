@@ -32,7 +32,7 @@ app.use('/photooxy', photooxy)
 app.use('/otakudesu', otakudesu)
 app.use('/games', games)
 app.use('/primbon', primbon)
-app.use('converter', convert)
+app.use('/converter', convert)
 app.use('/', main)
 
 // Cretae folder
