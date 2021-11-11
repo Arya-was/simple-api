@@ -2,6 +2,7 @@ const tiktok_scrape = require('tiktok-scraper')
 const axios = require('axios')
 const cheerio = require('cheerio')
 const fetch = require('node-fetch')
+const { musicaldown } = require('./musicaldown')
 
 const headers = {
 	"user-agent": "Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.81 Safari/537.36",
@@ -48,19 +49,46 @@ async function noWM (Url) {
 async function tiktok(url) { 
 var fullUrl = await fetch(url)
 const tiktok = await tiktok_scrape.getVideoMeta(fullUrl.url, {headers})
-const tiktok_dl = await noWM(url)
-const obj = {}
-obj.id = tiktok.collector[0].id
-obj.desctription = tiktok.collector[0].text 
-obj.thumbnail = tiktok.collector[0].imageUrl
-obj.likes = tiktok.collector[0].diggCount
-obj.share = tiktok.collector[0].shareCount
-obj.comment = tiktok.collector[0].commentCount
-obj.view = tiktok.collector[0].playCount
-obj.music_name = tiktok.collector[0].musicMeta.musicName
-obj.videoUrl = tiktok_dl.videoUrl
-obj.nowatermark = tiktok_dl.nowatermark
-obj.music = tiktok_dl.music
+const ingfo = tiktok.collector[0]
+const tiktok_dl = await musicaldown(url)
+const titoko = `https://tyz-api.herokuapp.com/downloader/tiktoknowm?link=${url}`
+const tikitoko = `https://tyz-api.herokuapp.com/downloader/tiktokaudio?link=${url}`
+const obj = {
+	videoInfo: {
+		id: ingfo.id,
+		desc: ingfo.text,
+		like: ingfo.diggCount,
+		share: ingfo.shareCount,
+		play: ingfo.playCount,
+		comment: ingfo.commentCount,
+		mentions: ingfo.mentions,
+		hashtags: ingfo.hashtags,
+	},
+	musicMeta: {
+		musicId: ingfo.musicId,
+		musicName: ingfo.musicName,
+		musicAuthor: ingfo.musicAuthor,
+		duration: ingfo.duration,
+		coverThumb: ingfo.coverThumb,
+	},
+	authorMeta: {
+		id: ingfo.id,
+		name: ingfo.name,
+		nickName: ingfo.nickName,
+		following: ingfo.following,
+		heart: ingfo.heart,
+		bio: ingfo.signature,
+		avatar: ingfo.avatar,
+	},
+	metaData: {
+		nowatermark: titoko,
+		audio: tikitoko,
+		video_original: tiktok_dl.video_original,
+		audio_original: tiktok_dl.audio_original,
+		preview: tiktok_dl.preview,
+		thumbnail: ingfo.imageUrl
+	}
+}
 return obj
 }
 
