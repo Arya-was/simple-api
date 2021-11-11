@@ -7,6 +7,7 @@ const { getBuffer } = require('../lib/function')
 
 //scraper
 const { igDownload, tiktok, mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
+const { musicaldown } = require('../scraper/musicaldown')
 const { stickerDl } = require('../scraper/stickerpack')
 
 router.get('/tiktok', async(req, res) => {
@@ -23,9 +24,22 @@ router.get('/tiktok', async(req, res) => {
 router.get('/tiktoknowm', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await savetik(link)
+	var hasil = await musicaldown(link)
 	try {
-		var data = await getBuffer(hasil.url)
+		var data = await getBuffer(hasil.nowm)
+		await fs.writeFileSync(__path +'/tmp/tiktok.mp4', data)
+   		await res.sendFile(__path +'/tmp/tiktok.mp4')
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/tiktokaudio', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await musicaldown(link)
+	try {
+		var data = await getBuffer(hasil.audio)
 		await fs.writeFileSync(__path +'/tmp/tiktok.mp4', data)
    		await res.sendFile(__path +'/tmp/tiktok.mp4')
 	} catch(err) {
