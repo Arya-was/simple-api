@@ -47,7 +47,7 @@ async function musicaldown(URL) {
                 audio_original: hc('body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l8 > a:nth-child(8)').attr('href'),
                 preview: ch('body > div.welcome.section > div > div:nth-child(2) > div.col.s12.l4 > img').attr('src')
             }
-        console.log(result)
+        resolve(result)
         })
     })
     })
