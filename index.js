@@ -22,6 +22,7 @@ var otakudesu = require('./server/otakudesu.js');
 var games = require('./server/games.js');
 var primbon = require('./server/primbon.js');
 var convert = require('./server/convert.js');
+var other = require('./server/other.js');
 var main = require('./main');
 
 app.use('/downloader', downloader)
@@ -33,6 +34,7 @@ app.use('/otakudesu', otakudesu)
 app.use('/games', games)
 app.use('/primbon', primbon)
 app.use('/converter', convert)
+app.use('/other', other)
 app.use('/', main)
 
 // Cretae folder
