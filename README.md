@@ -43,5 +43,5 @@ Tapi Jangan lupa nama creator (ɔ◔‿◔)ɔ ♥
 ```
 
 ## Thanks To
-* [`indrijunanda`] (https://github.com/indrijunanda/RuangAdmin)
+* [`indrijunanda`](https://github.com/indrijunanda/RuangAdmin)
 * Anu-Team
