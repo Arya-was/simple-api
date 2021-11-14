@@ -84,7 +84,7 @@ router.get('/captain_amerika', async (req, res) => {
 	var text_2 = req.query.text_2
 	if (!text) return res.json({ message: 'Masukan parameter Text'})
 	if (!text_2) return res.json({ message: 'Masukan parameter Text_2'})
-	var img = await fetch(`https://tyz-api.herokuapp.com/photooxy/photooxy1?text=${text}&text_2=${text_2}&link=${UrlPhotooxy.captain_amerika}`)
+	var img = await fetch(`https://tyz-api.herokuapp.com/photooxy/photooxy2?text=${text}&text_2=${text_2}&link=${UrlPhotooxy.captain_amerika}`)
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
@@ -134,7 +134,7 @@ router.get('/tik_tok', async (req, res) => {
 	var text_2 = req.query.text_2
 	if (!text) return res.json({ message: 'Masukan parameter Text'})
 	if (!text_2) return res.json({ message: 'Masukan parameter Text_2'})
-	var img = await fetch(`https://tyz-api.herokuapp.com/photooxy/photooxy1?text=${text}&text_2=${text_2}&link=${UrlPhotooxy.tik_tok}`)
+	var img = await fetch(`https://tyz-api.herokuapp.com/photooxy/photooxy2?text=${text}&text_2=${text_2}&link=${UrlPhotooxy.tik_tok}`)
 	var getBuffer = await img.buffer()
 	await fs.writeFileSync(__path + '/tmp/image.jpg', getBuffer)
 	res.sendFile(__path + '/tmp/image.jpg')
