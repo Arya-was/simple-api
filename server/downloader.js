@@ -9,6 +9,7 @@ const { getBuffer } = require('../lib/function')
 const { igDownload, tiktok, mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
 const { musicaldown } = require('../scraper/musicaldown')
 const { stickerDl } = require('../scraper/stickerpack')
+const { dl } = require('aiovideodl')
 
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
@@ -83,7 +84,29 @@ router.get('/sfiledl', async(req, res) => {
 router.get('/youtube', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await hxz.youtube(link)
+	var hasil = await dl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/fbdl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await dl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/likeedl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await dl(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
