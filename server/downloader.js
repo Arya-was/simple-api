@@ -9,7 +9,7 @@ const { getBuffer } = require('../lib/function')
 const { igDownload, tiktok, mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
 const { musicaldown } = require('../scraper/musicaldown')
 const { stickerDl } = require('../scraper/stickerpack')
-const { dl } = require('aiovideodl')
+const { dl } = require('../scraper/aiovideodl')
 
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
