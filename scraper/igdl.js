@@ -1,7 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-function igdl(url) {
+function igDownload(url) {
 	return new Promise((resolve, reject) => {
 		axios.request({
 			url: 'https://downloadgram.org/#downloadhere',
@@ -20,4 +20,4 @@ function igdl(url) {
 		}).catch(reject)
 	})
 }
-module.exports = igdl
+module.exports = igDownload
