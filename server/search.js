@@ -8,14 +8,18 @@ const { getBuffer } = require('../lib/function')
 const { pinterest, randomTiktok, konachan } = require('../scraper/index') 
 const { stickerSearch } = require('../scraper/stickerpack')
 
+
+//Biar Result nya 20
+//Disable Console Log
 router.get('/google', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var google = require('google-it')
-	var result = google({'query': query}).then(result => {
+	var result = google({'query' : `${query}`, limit: 20, disableConsole: true }).then(result => {
 	res.json({ result })
 	})
-})
+})     
+
 router.get('/pinterest', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
