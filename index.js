@@ -1,4 +1,4 @@
-const express = require('express'),
+const express = require('express')
 const secure = require('ssl-express-www')
 const PORT = process.env.PORT || 8080;
 const morgan = require('morgan')
