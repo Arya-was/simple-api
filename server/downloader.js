@@ -154,7 +154,7 @@ router.get('/spotifydl', async(req, res) => {
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await spotifydl.downloadTrack(link)
 	try {
-		await fs.writeFileSync(__path +'/tmp/audio.mp3', data)
+		await fs.writeFileSync(__path +'/tmp/audio.mp3', hasil)
    		await res.sendFile(__path +'/tmp/audio.mp3')
 	} catch(err) {
 		console.log(err)
@@ -167,28 +167,6 @@ router.get('/spotify', async(req, res) => {
 	var hasil = await spotifydl.getTrack(link)
 	try {
 		res.json({ info: hasil, dl_lnk: `https://tyz-api.herokuapp.com/downloader/spotifydl?link=${link}` })
-	} catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
-})
-router.get('/joooxdl', async(req, res) => {
-	var link = req.query.link
-	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await jooxdl(link)
-	try {
-		res.json(hasil)
-	} catch(err) {
-		console.log(err)
-		res.json({ message: 'Ups, error' })
-	}
-})
-router.get('/jooxplay', async(req, res) => {
-	var query = req.query.query
-	if (!query) return res.json({ message: 'masukan parameter query' })
-	var hasil = await joox(query)
-	try {
-		res.json(hasil)
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
