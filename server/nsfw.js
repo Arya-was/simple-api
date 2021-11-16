@@ -52,5 +52,6 @@ router.get('/nhcode', async (req, res) => {
     	await fs.unlinkSync(__path + `/tmp/${title}.pdf`)
      } catch(err) {
        res.json({ error: err.message }) 
+     }
 })
 module.exports = router
