@@ -39,6 +39,7 @@ router.get('/nhentaipdf', async (req, res) => {
 	})
 })
 router.get('/nhcode', async (req, res) => {
+        try {
 	var query = req.query.query
 	let data = await axios.get('https://tyz-api.herokuapp.com/nsfw/nHentai?code='+query)
     	let restjson = data.data.result.pages
@@ -49,5 +50,7 @@ router.get('/nhcode', async (req, res) => {
     	await res.sendFile(__path + `/tmp/${title}.pdf`)
     	await sleep(3000)
     	await fs.unlinkSync(__path + `/tmp/${title}.pdf`)
+     } catch(err) {
+       res.json({ error: err.message }) 
 })
 module.exports = router
