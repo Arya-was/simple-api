@@ -40,6 +40,8 @@ Tapi Jangan lupa nama creator (ɔ◔‿◔)ɔ ♥
 >> Text to Gif
 >> ScreenShoot web
 >> Remove bg
+>> Meme (Meme Engglish)
+>> Qrcode Creator 
 ```
 
 ## Thanks To
