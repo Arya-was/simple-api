@@ -10,6 +10,8 @@ const { igDownload, tiktok, mediafireDl, pinterestdl, scdl, sfiledl, savetik } =
 const { musicaldown } = require('../scraper/musicaldown')
 const { stickerDl } = require('../scraper/stickerpack')
 const { dl } = require('../scraper/aiovideodl')
+const { spotifydl } = require('../scraper/spotify')
+const { jooxdl, joox } = require('../scraper/joox')
 
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
@@ -140,6 +142,51 @@ router.get('/scdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await scdl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/spotifydl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await spotifydl.downloadTrack(link)
+	try {
+		await fs.writeFileSync(__path +'/tmp/audio.mp3', data)
+   		await res.sendFile(__path +'/tmp/audio.mp3')
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/spotify', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await spotifydl.getTrack(link)
+	try {
+		res.json({ info: hasil, dl_lnk: `https://tyz-api.herokuapp.com/downloader/spotifydl?link=${link}` })
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/joooxdl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await jooxdl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/jooxplay', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var hasil = await joox(query)
 	try {
 		res.json(hasil)
 	} catch(err) {
