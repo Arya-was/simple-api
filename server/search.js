@@ -6,6 +6,7 @@ const { getBuffer } = require('../lib/function')
 
 //scraper
 const { pinterest, randomTiktok, konachan } = require('../scraper/index') 
+const { wallpapercave, wallpaperscraft, wallpaperflare, alphacoders } = require('../scraper/wallpaper')
 const { stickerSearch } = require('../scraper/stickerpack')
 
 
@@ -34,6 +35,42 @@ router.get('/konachan', async(req, res) => {
 	var data = await getBuffer(result)
     	await fs.writeFileSync(__path +'/tmp/konachan.png', data)
    	await res.sendFile(__path +'/tmp/konachan.png')
+})
+router.get('/alphacoders', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var img = await alphacoders(query)
+	const result = img[Math.floor(Math.random() * (img.length))]
+	var data = await getBuffer(result)
+    	await fs.writeFileSync(__path +'/tmp/image.png', data)
+   	await res.sendFile(__path +'/tmp/image.png')
+})
+router.get('/wallpapercave', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var img = await wallpapercave(query)
+	const result = img[Math.floor(Math.random() * (img.length))]
+	var data = await getBuffer(result)
+    	await fs.writeFileSync(__path +'/tmp/image.png', data)
+   	await res.sendFile(__path +'/tmp/image.png')
+})
+router.get('/wallpaperscraft', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var img = await wallpaperscraft(query)
+	const result = img[Math.floor(Math.random() * (img.length))]
+	var data = await getBuffer(result)
+    	await fs.writeFileSync(__path +'/tmp/image.png', data)
+   	await res.sendFile(__path +'/tmp/image.png')
+})
+router.get('/wallpaperflare', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var img = await wallpaperflare(query)
+	const result = img[Math.floor(Math.random() * (img.length))]
+	var data = await getBuffer(result)
+    	await fs.writeFileSync(__path +'/tmp/image.png', data)
+   	await res.sendFile(__path +'/tmp/image.png')
 })
 router.get('/tiktok', async(req, res) => {
 	var query = req.query.query
