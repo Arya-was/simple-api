@@ -45,4 +45,39 @@ router.get('/ssweb', async(req, res) => {
     await res.sendFile(__path +'/tmp/ssweb.png')
 })
 
+//Qrcode
+router.get("/qrcode", (req, res) => {
+ var qr = require('qr-image')
+ var text = req.query.text
+ if(!text) return res.json({ message: 'Masukan Kata!' })
+ var img = qr.image(text,{size :13});
+ res.writeHead(200, {'Content-Type': 'image/png'});
+ img.pipe(res);
+});
+
+//Meme
+router.get('/meme', async (req, res) => {
+     const fetch = require('node-fetch')
+     const subReddits = ["dankmeme", "meme", "memes"];
+     const random = Math.floor(Math.random() * subReddits.length)
+     var body = await fetch('https://www.reddit.com/r/' + subReddits[random] + '/random/.json')
+     body = await body.json()
+     const a = body[0]
+     const title = a.data.children[0].data.title
+     const url = 'https://reddit.com'+a.data.children[0].data.permalink
+     const link = a.data.children[0].data.url_overridden_by_dest
+     const ups = a.data.children[0].data.ups
+     const comments = a.data.children[0].data.num_comments
+     const sub = a.data.children[0].data.subreddit_name_prefixed
+     const preview = a.data.children[0].data.preview
+     return res.json({
+         status: true,
+         title: title, 
+         url: url, 
+         image: link, 
+         ups: ups, 
+         comments: comments 
+    });
+ })
+
 module.exports = router
