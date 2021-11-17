@@ -1,6 +1,7 @@
 const express = require('express')
 var router = express.Router();
 const { getBuffer } = require('../lib/function')
+const { merdekaNews } = require('../scraper/merdekanews')
 const fs = require('fs')
 __path = process.cwd()
 
@@ -43,6 +44,11 @@ router.get('/ssweb', async(req, res) => {
     const data = await getBuffer(`https://rya-kun.herokuapp.com/api/ssweb?link=${link}`)
     await fs.writeFileSync(__path +'/tmp/ssweb.png', data)
     await res.sendFile(__path +'/tmp/ssweb.png')
+})
+
+router.get('/merdeka', async(req, res) => {
+ const result = await merdekaNews()
+ res.json({ result })
 })
 
 //Qrcode
