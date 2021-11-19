@@ -10,5 +10,4 @@ module.exports = {
 	sfiledl: require('./solidfiles'),
 	tebakgambar: require('./tebakgambar'),
 	konachan: require('./konachan'),
-	savetik: require('./savetik')
 }
