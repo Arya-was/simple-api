@@ -97,7 +97,7 @@ router.get('/youtube', async(req, res) => {
 	}
 })
 router.get('/play', async(req, res) => {
-	var link = req.query.query
+	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	let results = await yts(query)
   	let vid = results.all.find(video => video.seconds < 3600)
