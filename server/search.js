@@ -27,13 +27,13 @@ router.get('/google', async(req, res) => {
 router.get('/pinterest', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
-	var result = await searchIlust(query)
+	var result = await pinterest(query)
 	res.json({ result })
 })
 router.get('/pixiv', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
-	var result = await pinterest(query)
+	var result = await searchIlust(query)
 	res.json({ result })
 })
 router.get('/konachan', async(req, res) => {
