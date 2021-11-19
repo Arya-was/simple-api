@@ -1,26 +1,37 @@
 # simple-api
 
 Pake aja buat belajar, saya pun masih belajar
-Enjoy~ <3
 Tapi Jangan lupa nama creator (ɔ◔‿◔)ɔ ♥
+Yang mau nambahin bisa Pull request kalo ada yang Error bisa langsung buat Issue
+Enjoy~ <3
 
 ## 🛠️ Feature
 ```
+>> Play
+>> Youtube Downloader
 >> Tiktok Downloader
 >> Tiktok Nowatermark
 >> Tiktok Audio
 >> Instagram Downloader
+>> Facebook Downloader
 >> Twitter Downloader
+>> Likee Downloader
 >> Pinterest Downloader
+>> Pixiv Downloader
 >> Solidfiles Downloadaer
 >> Mediafire Downloader
 >> Soundcloud Downloader
 >> Stickerpack Downloader
 >> Pinterest Search
+>> Alphacoders Search
+>> Wallpaperscraft Search
+>> Wallpapercave Search
 >> ZeroChan Search
 >> StickerPack Search
 >> Google Search
+>> Happymod Search
 >> Tiktok Search
+>> Random Search
 >> Artinama
 >> Ramal Jodoh
 >> Milf
@@ -40,6 +51,7 @@ Tapi Jangan lupa nama creator (ɔ◔‿◔)ɔ ♥
 >> Text to Gif
 >> ScreenShoot web
 >> Remove bg
+>> Merdeka News
 >> Meme (Meme Engglish)
 >> Qrcode Creator 
 ```
