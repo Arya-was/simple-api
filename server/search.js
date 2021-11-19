@@ -10,6 +10,7 @@ const { wallpapercave, wallpaperscraft, wallpaperflare, alphacoders } = require(
 const { stickerSearch } = require('../scraper/stickerpack')
 const { savetikVideo } = require('../scraper/savetik')
 const { happymodSearch } = require('../scraper/happymod')
+const { searchIlust } = require('../scraper/pixiv')
 
 
 //Biar Result nya 20
@@ -24,6 +25,12 @@ router.get('/google', async(req, res) => {
 })     
 
 router.get('/pinterest', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await searchIlust(query)
+	res.json({ result })
+})
+router.get('/pixiv', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await pinterest(query)
