@@ -8,6 +8,8 @@ const { getBuffer } = require('../lib/function')
 const { pinterest, randomTiktok, konachan } = require('../scraper/index') 
 const { wallpapercave, wallpaperscraft, wallpaperflare, alphacoders } = require('../scraper/wallpaper')
 const { stickerSearch } = require('../scraper/stickerpack')
+const { savetikVideo } = require('../scraper/savetik')
+const { happymodSearch } = require('../scraper/happymod')
 
 
 //Biar Result nya 20
@@ -76,6 +78,16 @@ router.get('/tiktok', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await randomTiktok(query)
+	res.json({ result })
+})
+router.get('/randomtiktok', async(req, res) => {
+	var result = await savetikVideo()
+	res.json({ result })
+})
+router.get('/happymod', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await happymodSearch(query)
 	res.json({ result })
 })
 router.get('/sticker', async(req, res) => {
