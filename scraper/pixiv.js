@@ -4,7 +4,7 @@ function searchIlust(query) {
 	return new Promise((resolve, reject) => { 
 		axios.get('https://api.lolicon.app/setu/v2?&size=regular&num=100&keyword='+query).then(res => {
 			const result = res.data.data
-      if (result >.length < 1) {
+      if (result.length < 1) {
           throw 'Hasil tidak di temukan!'
       } else {
         resolve(result)
