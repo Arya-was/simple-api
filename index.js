@@ -15,6 +15,7 @@ __path = process.cwd()
 
 var downloader = require('./server/downloader.js');
 var search = require('./server/search.js');
+var anime = require('./server/anime.js');
 var randomimg = require('./server/randomimage.js');
 var nsfw = require('./server/nsfw.js');
 var photooxy = require('./server/photooxy.js');
@@ -27,6 +28,7 @@ var main = require('./main');
 
 app.use('/downloader', downloader)
 app.use('/search', search)
+app.use('/anime', anime)
 app.use('/randomimg', randomimg)
 app.use('/nsfw', nsfw)
 app.use('/photooxy', photooxy)
