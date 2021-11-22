@@ -7,7 +7,7 @@ router.get('/mynimekuSearch', async(req, res) => {
   var query = req.query.query
   if (!query) return res.json({ message: 'masukan parameter query' })
   var result = await mynimeku.Search(query)
-  if (result < 1) return res.json({ message: 'anime not found!' })
+  if (result > 1) return res.json({ message: 'anime not found!' })
   res.json(result)
 })
 
