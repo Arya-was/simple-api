@@ -36,8 +36,8 @@ router.get('/mynimekuDownload', async(req, res) => {
 })
 
 router.get('/storyanime', async(req, res) => {
-  let res = await fetch('https://raw.githubusercontent.com/Arya-was/endak-tau/main/storyanime.json')
-  let data = await res.json()
+  let res_ = await fetch('https://raw.githubusercontent.com/Arya-was/endak-tau/main/storyanime.json')
+  let data = await res_.json()
   let json = data[Math.floor(Math.random() * data.length)]
   var dl = await axios.get(`https://tyz-api.herokuapp.com/downloader/igdl?link=${json}`)
   const buffer = await getBuffer(dl.data[0])
