@@ -32,20 +32,18 @@ router.get('/mynimekuDownload', async(req, res) => {
 
 router.get('/storyanime', async(req, res) => {
   var story = (await axios.get('https://raw.githubusercontent.com/Arya-was/endak-tau/main/storyanime.json')).data
-  const nime = story[Math.floor(Math.random() * (story.length))]
+  const nime = await story[Math.floor(Math.random() * (story.length))]
   var dl = (await axios.get(`https://tyz-api.herokuapp.com/downloader/igdl?link=${nime}`)).data
   const buffer = await getBuffer(dl[0])
   await fs.writeFileSync(__path +'/tmp/video.mp4', buffer)
   await res.sendFile(__path +'/tmp/video.mp4')
+  await fs.unlinkSync(__path +'/tmp/video.mp4', buffer)
 })
 
 router.get('/quotesnime', async(req, res) => {
  var quote = (await axios.get('https://raw.githubusercontent.com/Arya-was/endak-tau/main/quotenime.json')).data
  var randquote = quote[Math.floor(Math.random() * (quote.length))]
- res.json({
-	 quote: randquote.quote,
-	 chara: randquote.char
- })
+ res.json(randquote)
 })
 
 
