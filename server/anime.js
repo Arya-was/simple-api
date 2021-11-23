@@ -42,10 +42,10 @@ router.get('/storyanime', async(req, res) => {
   let json = data[Math.floor(Math.random() * data.length)]
   var dl_link = await dl(json)
   const buffer = await getBuffer(dl_link.medias[0].url)
-  await fs.writeFileSync(__path +'/tmp/video.mp4', buffer)
-  await res.sendFile(__path +'/tmp/video.mp4')
+  await fs.writeFileSync(__path +`/tmp/${json}.mp4`, buffer)
+  await res.sendFile(__path +`/tmp/${json}.mp4`)
   await sleep(300)
-  await fs.unlinkSync(__path + '/tmp/video.mp4')
+  await fs.unlinkSync(__path + `/tmp/${json}.mp4`)
 })
 
 
