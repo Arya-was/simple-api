@@ -4,6 +4,7 @@ const axios = require('axios')
 const fetch = require('node-fetch')
 const fs = require('fs')
 const { getBuffer } = require('../lib/function')
+const { dl } = require('../scraper/aiovideodl')
 
 const mynimeku = require('../scraper/mynime')
 
@@ -39,8 +40,8 @@ router.get('/storyanime', async(req, res) => {
   let res_ = await fetch('https://raw.githubusercontent.com/Arya-was/endak-tau/main/storyanime.json')
   let data = await res_.json()
   let json = data[Math.floor(Math.random() * data.length)]
-  var dl = await axios.get(`https://tyz-api.herokuapp.com/downloader/igdl?link=${json}`)
-  const buffer = await getBuffer(dl.data[0])
+  var dl_link = await dl(json)
+  const buffer = await getBuffer(dl_link.medias[0].url)
   await fs.writeFileSync(__path +'/tmp/video.mp4', buffer)
   await res.sendFile(__path +'/tmp/video.mp4')
   await sleep(300)
