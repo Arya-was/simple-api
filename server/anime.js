@@ -8,6 +8,11 @@ const { getBuffer } = require('../lib/function')
 const mynimeku = require('../scraper/mynime')
 
 
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 router.get('/mynimekuSearch', async(req, res) => {
   var query = req.query.query
   if (!query) return res.json({ message: 'masukan parameter query' })
@@ -31,19 +36,15 @@ router.get('/mynimekuDownload', async(req, res) => {
 })
 
 router.get('/storyanime', async(req, res) => {
-  var story = (await axios.get('https://raw.githubusercontent.com/Arya-was/endak-tau/main/storyanime.json')).data
-  const nime = story[Math.floor(Math.random() * (story.length))]
-  var dl = await axios.get(`https://tyz-api.herokuapp.com/downloader/igdl?link=${nime}`)
+  let res = await fetch('https://raw.githubusercontent.com/Arya-was/endak-tau/main/storyanime.json')
+  let data = await res.json()
+  let json = data[Math.floor(Math.random() * data.length)]
+  var dl = await axios.get(`https://tyz-api.herokuapp.com/downloader/igdl?link=${json}`)
   const buffer = await getBuffer(dl.data[0])
   await fs.writeFileSync(__path +'/tmp/video.mp4', buffer)
   await res.sendFile(__path +'/tmp/video.mp4')
-})
-
-router.get('/quotesnime', async(req, res) => {
- var quote = await axios.get('https://raw.githubusercontent.com/Arya-was/endak-tau/main/quotenime.json')
- var quotes = quote.data
- var randquote = quotes[Math.floor(Math.random() * (quotes.length))]
- res.json(randquote)
+  await sleep(300)
+  await fs.unlinkSync(__path + '/tmp/video.mp4')
 })
 
 
