@@ -28,7 +28,8 @@ function animeDetail(url) {
             const _eps = []
             $('#episode_list > ul > li').each( function(a, b) {
                 const link = $(b).find('div > div.flexeps-infoz > a').attr('href')
-                _eps.push(link)
+                const title = $(b).find('div > div.flexeps-infoz > a').attr('title')
+                _eps.push({ link, title })
             })
             const result = {
                 thumb: $('body > main > div > div > div.container > div.series-flex > div.series-flexleft > div.series-thumb > img').attr('src'),
