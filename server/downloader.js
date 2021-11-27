@@ -14,6 +14,7 @@ const { dl } = require('../scraper/aiovideodl')
 const { spotifydl } = require('../scraper/spotify')
 const { jooxdl, joox } = require('../scraper/joox')
 const { pixivDownload } = require('../scraper/pixiv')
+const { igStory } = require('../scraper/igdl')
 
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
@@ -56,6 +57,17 @@ router.get('/igdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await igDownload(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/igStory', async(req, res) => {
+	var username = req.query.username
+	if (!username) return res.json({ message: 'masukan parameter username' })
+	var hasil = await igStory(username)
 	try {
 		res.json(hasil)
 	} catch(err) {
