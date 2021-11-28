@@ -13,6 +13,7 @@ Enjoy~ <3
 >> Tiktok Nowatermark
 >> Tiktok Audio
 >> Instagram Downloader
+>> Instagram story Downloader
 >> Facebook Downloader
 >> Twitter Downloader
 >> Likee Downloader
@@ -39,6 +40,32 @@ Enjoy~ <3
 >> Husbu
 >> Loli
 >> Cosplay
+>> Neko
+>> Ass
+>> Bdsm
+>> Blowjob
+>> Cum
+>> Doujin
+>> Feet
+>> Femdom
+>> Foxgirl
+>> Gifs
+>> Glasses
+>> Hentai
+>> Netorare
+>> Maid
+>> Masturbation
+>> Orgy
+>> Panties
+>> Pussy
+>> School
+>> Succubus
+>> Tentacles
+>> Things
+>> Uglyblastard
+>> Uniform
+>> Yuri
+>> Zettairyouiki
 >> Doujindesu Search
 >> Nhentai Search
 >> Nhentai Info
