@@ -4,6 +4,7 @@ const fs = require('fs');
 const fetch = require('node-fetch')
 const router = express.Router()
 const { ffmpeg, toAudio } = require('../lib/converter')
+const { getFile } = require('../lib/function')
 
 /**
  * Image to Webp
@@ -36,5 +37,11 @@ router.get('/tomp3', async(req, res) => {
     await fs.writeFileSync(__path + '/tmp/audio.mp3', audio)
 	await res.sendFile(__path + '/tmp/audio.mp3')
 })
+router.get('/toFile', async(req, res) => {
+     var url = req.query.url 
+     const buffer = await getFile(url)
+     fs.writeFileSync(__path+ `/tmp/temp.${buffer.ext}`, buffer.data)
+     res.sendFile(__path+ `/tmp/temp.${buffer.ext}`)
+}
 
 module.exports = router
