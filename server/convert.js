@@ -42,6 +42,6 @@ router.get('/toFile', async(req, res) => {
      const buffer = await getFile(url)
      fs.writeFileSync(__path+ `/tmp/temp.${buffer.ext}`, buffer.data)
      res.sendFile(__path+ `/tmp/temp.${buffer.ext}`)
-}
+})
 
 module.exports = router
