@@ -2,9 +2,26 @@ __path = process.cwd()
 const express = require("express");
 const fs = require('fs');
 const fetch = require('node-fetch')
+const FileType = require('file-type')
 const router = express.Router()
 const { ffmpeg, toAudio } = require('../lib/converter')
-const { getFile } = require('../lib/function')
+
+//Get Buffer
+async function getFile(path) {
+      let res
+      let data = Buffer.isBuffer(path) ? path : /^data:.*?\/.*?;base64,/i.test(path) ? Buffer.from(path.split`,`[1], 'base64') : /^https?:\/\//.test(path) ? await (res = await fetch(path)).buffer() : fs.existsSync(path) ? fs.readFileSync(path) : typeof path === 'string' ? path : Buffer.alloc(0)
+      if (!Buffer.isBuffer(data)) throw new TypeError('Result is not a buffer')
+      let type = await FileType.fromBuffer(data) || {
+        mime: 'application/octet-stream',
+        ext: '.bin'
+      }
+
+      return {
+        res,
+        ...type,
+        data
+      }
+    }
 
 /**
  * Image to Webp
