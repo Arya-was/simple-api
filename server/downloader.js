@@ -2,6 +2,7 @@ const express = require('express')
 var router = express.Router();
 const hxz = require('hxz-api')
 const yts = require('yt-search')
+const axios = require('axios')
 __path = process.cwd()
 const fs = require('fs')
 const { getBuffer } = require('../lib/function')
@@ -15,6 +16,12 @@ const { spotifydl } = require('../scraper/spotify')
 const { jooxdl, joox } = require('../scraper/joox')
 const { pixivDownload } = require('../scraper/pixiv')
 const { igStory } = require('../scraper/igdl')
+const { ytv, yta } = require('../scraper/ytdl')
+
+function shorts(url) {
+  const res = await axios.get('https://tinyurl.com/api-create.php?url='url)
+  return res.data
+}
 
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
@@ -100,9 +107,18 @@ router.get('/sfiledl', async(req, res) => {
 router.get('/youtube', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await dl(link)
+	var yt1 = await yta(link)
+	var yt2 = await ytv(link)
+	const audioUrl = await shorts(yt1.dl_link)
+	const videoUrl = await shorts(yt2.dl_link)
 	try {
-		res.json(hasil)
+		res.json({
+			title: yt1.title,
+			thumb: yt1.thumb,
+			filesize: yt1.filesizeF,
+			audio: 'https://tyz-api.herokuapp.com/converter/toFile?url='+audioUrl,
+			video: 'https://tyz-api.herokuapp.com/converter/toFile?url='+videoUrl,
+		})
 	} catch(err) {
 		console.log(err)
 		res.json({ message: 'Ups, error' })
