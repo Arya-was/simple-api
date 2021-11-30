@@ -18,8 +18,8 @@ const { pixivDownload } = require('../scraper/pixiv')
 const { igStory } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
 
-function shorts(url) {
-  const res = await axios.get('https://tinyurl.com/api-create.php?url='url)
+async function shorts(url) {
+  const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
   return res.data
 }
 
