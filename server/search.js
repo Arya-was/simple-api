@@ -11,6 +11,7 @@ const { stickerSearch } = require('../scraper/stickerpack')
 const { savetikVideo } = require('../scraper/savetik')
 const { happymodSearch } = require('../scraper/happymod')
 const { searchIlust } = require('../scraper/pixiv')
+const { tiktokHastag } = require('../scraper/tiktok_search')
 
 
 //Biar Result nya 20
@@ -82,6 +83,12 @@ router.get('/wallpaperflare', async(req, res) => {
    	await res.sendFile(__path +'/tmp/image.png')
 })
 router.get('/tiktok', async(req, res) => {
+	var query = req.query.query
+	if (!query) return res.json({ message: 'masukan parameter query' })
+	var result = await tiktokHastag(query)
+	res.json({ result })
+})
+router.get('/tiktokHastag', async(req, res) => {
 	var query = req.query.query
 	if (!query) return res.json({ message: 'masukan parameter query' })
 	var result = await randomTiktok(query)
