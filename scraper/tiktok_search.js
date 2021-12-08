@@ -103,5 +103,32 @@ async function randomTiktok(query) {
 		}).catch(resolve)
 	})
 }
+async function tiktokHastag(query) {
+	return new Promise((resolve, reject) => {
+		axios.get('https://tiktokder.com/hashtag/'+query).then(resp => {
+			const $ = cheerio.load(resp.data)
+			const Vidlink = []
+			const main = $('body > div.videos-grid > div > a')
+			main.each(function() {
+				const URL = 'https://tiktokder.com'+$(this).attr('href')
+				Vidlink.push(URL)
+			})
+			pickrandom(Vidlink).then(res => {
+				axios.get(res).then(respon => {
+					const ch = cheerio.load(respon.data)
+					resolve({
+						url: ch('#tiktok-video-result > div > div.download-buttons > div > a').attr('href').replace('https://savetiknowm.org/?tiktok_url=', ''),
+						usernameNick: ch('#tiktok-video-result > div > div.result > div:nth-child(2) > div.profile > a.user-nickname').text(),
+						username: ch('#tiktok-video-result > div > div.result > div:nth-child(2) > div.profile > a.username').text(),
+						description: ch('#tiktok-video-result > div > div.result > div:nth-child(2) > p').text(),
+						nowm: 'https://tyz-api.herokuapp.com/downloader/tiktoknowm?link='+ch('#tiktok-video-result > div > div.download-buttons > div > a').attr('href').replace('https://savetiknowm.org/?tiktok_url=', ''),
+						original: ch('#tiktok-video-result > div > div.download-buttons > a').attr('href')
+					})
+				})
+			})
+		}).catch(reject)
+	})
+}
 // Yang lain nya bonus aja:D
 module.exports = randomTiktok 
+module.exports = tiktokHastag
