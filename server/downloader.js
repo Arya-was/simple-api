@@ -17,6 +17,7 @@ const { jooxdl, joox } = require('../scraper/joox')
 const { pixivDownload } = require('../scraper/pixiv')
 const { igStory } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
+const zipi = require('../scraper/zippy')
 
 async function shorts(url) {
   const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
@@ -86,6 +87,17 @@ router.get('/mediafireDl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
 	var hasil = await mediafireDl(link)
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
+router.get('/zippyShare', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var hasil = await zipi.zippy(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
