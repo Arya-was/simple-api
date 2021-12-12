@@ -2,6 +2,11 @@ const cheerio = require('cheerio')
 const url = require('url')
 const axios = require('axios')
 
+async function shorts(url) {
+  const res = await axios.get('https://tinyurl.com/api-create.php?url='+url)
+  return res.data
+}
+
 function zippy(Url) {
 	return new Promise((resolve, reject) => { 
 		try {
@@ -22,7 +27,9 @@ function zippy(Url) {
 						if (decrypt) {
 							_url = url.parse(Url).hostname + eval(decrypt)
 							_url = _url.startsWith('http') ? _url : 'http://' + _url
-							result.url = _url
+							const url_final = 'https://tyz-api.herokuapp.com/converter/toFile?url='+_url
+							const final_url = await shorts(url_final)
+							result.url = final_url
 						}
 					}
 				})
