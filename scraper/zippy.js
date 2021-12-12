@@ -8,9 +8,10 @@ function zippy(Url) {
 			axios.get(Url).then(res => {
 				let result = {}
 				const $ = cheerio.load(res.data)
-				result.title = $('#lrbox > div:nth-child(1) > div:nth-child(1) > font:nth-child(4)').text()
-				result.size = $('#lrbox > div:nth-child(1) > div:nth-child(1) > font:nth-child(7)').text()
-				result.upload_date = $('#lrbox > div:nth-child(1) > div:nth-child(1) > font:nth-child(10)').text()
+				let text = $('#lrbox').find('div.center > div:nth-child(1)').text().split('\n')
+				result.title = (text[3] ||'').trim()
+				result.size = ((text[4] || '').replace('Size:', '') || '').trim()
+				result.upload_date = ((text[5] || '').replace('Uploaded:', '') || '').trim()
 				$('script').each((i, e) => {
 					let sc = $(e).html().search(/dlbutton/g)
 					if (sc >= 0) {
