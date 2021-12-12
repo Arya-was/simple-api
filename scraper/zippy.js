@@ -7,8 +7,8 @@ async function shorts(url) {
   return res.data
 }
 
-function zippy(Url) {
-	return new Promise((resolve, reject) => { 
+async function zippy(Url) {
+	return new Promise(async(resolve, reject) => { 
 		try {
 			axios.get(Url).then(res => {
 				let result = {}
