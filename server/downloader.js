@@ -128,7 +128,7 @@ router.get('/youtube', async(req, res) => {
 			title: yt1.title,
 			thumb: yt1.thumb,
 			filesize_audio: yt1.filesizeF,
-			filesize_video: yt2.filesezeF,
+			filesize_video: yt2.filesizeF,
 			audio: audioUrl,
 			video: videoUrl,
 		})
