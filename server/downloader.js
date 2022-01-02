@@ -8,14 +8,14 @@ const fs = require('fs')
 const { getBuffer } = require('../lib/function')
 
 //scraper
-const { igDownload, tiktok, mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
+const { tiktok, mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
 const { musicaldown } = require('../scraper/musicaldown')
 const { stickerDl } = require('../scraper/stickerpack')
 const { dl } = require('../scraper/aiovideodl')
 const { spotifydl } = require('../scraper/spotify')
 const { jooxdl, joox } = require('../scraper/joox')
 const { pixivDownload } = require('../scraper/pixiv')
-const { igStory } = require('../scraper/igdl')
+const { igStory, igDownload } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
 const zipi = require('../scraper/zippy')
 
