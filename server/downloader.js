@@ -15,7 +15,7 @@ const { dl } = require('../scraper/aiovideodl')
 const { spotifydl } = require('../scraper/spotify')
 const { jooxdl, joox } = require('../scraper/joox')
 const { pixivDownload } = require('../scraper/pixiv')
-const { igStory, igDownload } = require('../scraper/igdl')
+const { igStory, igStalk, igDownload } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
 const zipi = require('../scraper/zippy')
 
