@@ -100,5 +100,4 @@ function igStory(username) {
 	})
 }
 
-module.exports = igDownload
-module.exports = { igStory, igStalk }
+module.exports = { igStory, igStalk, igDownload }
