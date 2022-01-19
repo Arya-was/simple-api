@@ -81,7 +81,7 @@ Enjoy~ <3
 >> Merdeka News
 >> Meme (Meme Engglish)
 >> Qrcode Creator
->> Hlilih Generator
+>> Hilih Generator
 ```
 
 ## Thanks To
