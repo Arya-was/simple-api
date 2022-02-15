@@ -6,7 +6,7 @@ const multer = require('multer')
 const path = require('path')
 const fs = require('fs')
 var app = express();
-app.use(secure)
+//app.use(secure)
 app.use(morgan('dev'));
 app.use(express.static('client'));
 app.set("json spaces",2)
