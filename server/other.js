@@ -3,6 +3,7 @@ var router = express.Router();
 const { getBuffer } = require('../lib/function')
 const { merdekaNews } = require('../scraper/merdekanews')
 const fs = require('fs')
+const axios = require('axios')
 __path = process.cwd()
 
 router.get('/nulis', async(req, res) => {
@@ -60,6 +61,17 @@ router.get("/qrcode", (req, res) => {
  res.writeHead(200, {'Content-Type': 'image/png'});
  img.pipe(res);
 });
+
+//tribunnews
+router.get('/tribunnews', async(req, res) => {
+	var hasil = (await axios.get(`https://www.api.anubiskun.xyz/tribunnews/?api=free1000limit`)).data
+	try {
+		res.json(hasil)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
 
 //Meme
 router.get('/meme', async (req, res) => {

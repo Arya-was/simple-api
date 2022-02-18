@@ -255,5 +255,16 @@ router.get('/stickerpack', async(req, res) => {
 		res.json({ message: 'Ups, error' })
 	}
 })
+router.get('/instamultidl', async(req, res) => {
+	var link = req.query.link
+	if (!link) return res.json({ message: 'masukan parameter Link' })
+	var ig = (await axios.get(`https://www.api.anubiskun.xyz/igdl/?url=${link}&api=free1000limit`)).data
+	try {
+		res.json(ig)
+	} catch(err) {
+		console.log(err)
+		res.json({ message: 'Ups, error' })
+	}
+})
 
 module.exports = router

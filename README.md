@@ -7,6 +7,20 @@ Enjoy~ <3
 
 ## 🛠️ Feature
 ```
+>> Instagram Multi Link Download
+>> Togel Result
+>> Togel List
+>> Cosplayer IG
+>> Tribun News
+>> Tebak Gambar 2
+>> Dare Id
+>> Truth Id
+>> Siapa Aku
+>> Asah Otak
+>> Cak Lontong
+>> Rangkai Kata Id
+>> Rangkai Kata En
+>> Tebak Kata
 >> Play
 >> Youtube Downloader
 >> Tiktok Downloader
@@ -86,4 +100,5 @@ Enjoy~ <3
 
 ## Thanks To
 * [`indrijunanda`](https://github.com/indrijunanda/RuangAdmin)
+* [`anubiskun`](https://github.com/anubiskun)
 * Anu-Team
