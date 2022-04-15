@@ -17,6 +17,7 @@ const { jooxdl, joox } = require('../scraper/joox')
 const { pixivDownload } = require('../scraper/pixiv')
 const { igStory, igStalk, igDownload } = require('../scraper/igdl')
 const { ytv, yta } = require('../scraper/ytdl')
+const { savefrom } = require('../scraper/savefrom')
 const zipi = require('../scraper/zippy')
 
 async function shorts(url) {
@@ -38,9 +39,9 @@ router.get('/tiktok', async(req, res) => {
 router.get('/tiktoknowm', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await musicaldown(link)
+	var hasil = await tiktok(link)
 	try {
-		var data = await getBuffer(hasil.nowm)
+		var data = await getBuffer(hasil.metaData.video_original)
 		await fs.writeFileSync(__path +'/tmp/tiktok.mp4', data)
    		await res.sendFile(__path +'/tmp/tiktok.mp4')
 	} catch(err) {
@@ -51,9 +52,9 @@ router.get('/tiktoknowm', async(req, res) => {
 router.get('/tiktokaudio', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await musicaldown(link)
+	var hasil = await tiktok(link)
 	try {
-		var data = await getBuffer(hasil.audio)
+		var data = await getBuffer(hasil.metaData.audio_original)
 		await fs.writeFileSync(__path +'/tmp/tiktok.mp4', data)
    		await res.sendFile(__path +'/tmp/tiktok.mp4')
 	} catch(err) {
@@ -64,7 +65,7 @@ router.get('/tiktokaudio', async(req, res) => {
 router.get('/igdl', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await igDownload(link)
+	var hasil = await savefrom(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
@@ -191,7 +192,7 @@ router.get('/likeedl', async(req, res) => {
 router.get('/twitter', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await hxz.twitter(link)
+	var hasil = await savefrom(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
