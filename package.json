@@ -16,7 +16,7 @@
     "esm": "^3.2.25",
     "express": "^4.17.1",
     "form-data": "^4.0.0",
-    "file-type": "^16.5.3",
+    "file-type": "^17.1.2",
     "fs": "^0.0.1-security",
     "qr-image": "^3.2.0",
     "got": "^11.8.3",
