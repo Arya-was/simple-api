@@ -29,7 +29,7 @@
     "spotifydl-core": "^0.2.0",
     "url": "^0.11.0",
     "nhentai-js": "^4.0.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.2.6",
     "node-fetch-cookies": "^2.0.3",
     "path": "^0.12.7",
     "pdfkit": "^0.13.0",
