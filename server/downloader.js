@@ -10,7 +10,7 @@ const { getBuffer } = require('../lib/function')
 //scraper
 const {  mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
 const { musicaldown } = require('../scraper/musicaldown')
-const { noWm } = require('..scraper/tiktok')
+const { noWm } = require('../scraper/tiktok')
 const { stickerDl } = require('../scraper/stickerpack')
 const { dl } = require('../scraper/aiovideodl')
 const { spotifydl } = require('../scraper/spotify')
