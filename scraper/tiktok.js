@@ -92,4 +92,4 @@ const obj = {
 return obj
 }
 
-module.exports = tiktok 
+module.exports = { noWm } 
