@@ -8,8 +8,9 @@ const fs = require('fs')
 const { getBuffer } = require('../lib/function')
 
 //scraper
-const { tiktok, mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
+const {  mediafireDl, pinterestdl, scdl, sfiledl, savetik } = require('../scraper/index') 
 const { musicaldown } = require('../scraper/musicaldown')
+const { noWm } = require('..scraper/tiktok')
 const { stickerDl } = require('../scraper/stickerpack')
 const { dl } = require('../scraper/aiovideodl')
 const { spotifydl } = require('../scraper/spotify')
@@ -28,7 +29,7 @@ async function shorts(url) {
 router.get('/tiktok', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await tiktok(link)
+	var hasil = await noWM(link)
 	try {
 		res.json(hasil)
 	} catch(err) {
@@ -39,9 +40,9 @@ router.get('/tiktok', async(req, res) => {
 router.get('/tiktoknowm', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await tiktok(link)
+	var hasil = await noWM(link)
 	try {
-		var data = await getBuffer(hasil.metaData.video_original)
+		var data = await getBuffer(hasil.nowatermark)
 		await fs.writeFileSync(__path +'/tmp/tiktok.mp4', data)
    		await res.sendFile(__path +'/tmp/tiktok.mp4')
 	} catch(err) {
@@ -52,9 +53,9 @@ router.get('/tiktoknowm', async(req, res) => {
 router.get('/tiktokaudio', async(req, res) => {
 	var link = req.query.link
 	if (!link) return res.json({ message: 'masukan parameter Link' })
-	var hasil = await tiktok(link)
+	var hasil = await noWM(link)
 	try {
-		var data = await getBuffer(hasil.metaData.audio_original)
+		var data = await getBuffer(hasil.music)
 		await fs.writeFileSync(__path +'/tmp/tiktok.mp4', data)
    		await res.sendFile(__path +'/tmp/tiktok.mp4')
 	} catch(err) {
