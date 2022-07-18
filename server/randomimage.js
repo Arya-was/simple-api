@@ -65,5 +65,10 @@ router.get('/cosplay', async(req, res) => {
     await sleep(3000)
     await fs.unlinkSync(__path + '/tmp/waifu.png')
 })
+// lebih dari 1000 gambar cosplayer mix nsfw & sfw
+router.get('/cosplayig', async(req, res) => {
+	var anubis = (await axios.get(`https://www.api.anubiskun.xyz/cosplayer/?api=free1000limit`)).data
+    res.json(anubis)
+})
 
 module.exports = router
